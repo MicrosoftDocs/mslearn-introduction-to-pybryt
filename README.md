@@ -1,5 +1,28 @@
+# Microsoft Learn Module: Introduction to PyBryt
 
-# Contributing
+[Microsoft Learn Module]()
+
+## Module Overview
+
+In this module, you will:
+
+* Annotate solutions to assignments to create reference implementations.
+* Combine reference implementations to assess different submission types for assignments.
+* Develop a Fibonacci sequence assignment using PyBryt.
+
+## Prerequisites
+
+* Intermediate/advanced Python knowledge
+
+## Modules
+
+* Introduction - 5 min
+* Annotations - 10 min
+* Reference Implementations - 10 min
+* Exercise: Build an Assignment - 15 min
+* Summary - 3 min
+
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -13,7 +36,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# Legal Notices
+## Legal Notices
 
 Microsoft and any contributors grant you a license to the Microsoft documentation and other content
 in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
