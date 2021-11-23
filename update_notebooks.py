@@ -16,14 +16,16 @@ def remove_notebook_solutions(nb_path, write_path):
 
 def main():
     ref_notebooks = glob("*-ref.ipynb")
-    
-    for ref in ref_notebooks:
-#         print(f"Creating reference for {ref}")
-#         pybryt.ReferenceImplementation.compile(ref).dump()
-        
+    for ref in ref_notebooks:        
         print(f"Creating stripped version of {ref}")
         nb_path = os.path.splitext(ref)[0][:-4] + ".ipynb"
         remove_notebook_solutions(ref, nb_path)
+
+    all_notebooks = glob("*.ipynb")
+    for nb_name in all_notebooks:
+        nb = nbf.read(nb_name, as_version=nbf.NO_CONVERT)
+        nb["metadata"]["kernelspec"]["name"] = "conda-env-py37_default-py"
+        nbf.write(nb, nb_name)
 
 
 if __name__ == "__main__":
