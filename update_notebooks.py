@@ -4,7 +4,7 @@ import pybryt
 
 from glob import glob
 from otter.assign.solutions import strip_solutions_and_output, SOLUTION_CELL_TAG
-from otter.assign.utils import add_tag
+from otter.assign.utils import add_tag, remove_output
 
 
 def remove_notebook_solutions(nb_path, write_path):
@@ -26,6 +26,7 @@ def main():
         nb = nbf.read(nb_name, as_version=nbf.NO_CONVERT)
         nb["metadata"]["kernelspec"]["display_name"] = "py37_default"
         nb["metadata"]["kernelspec"]["name"] = "conda-env-py37_default-py"
+        remove_output(nb)
         nbf.write(nb, nb_name)
 
 
