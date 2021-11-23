@@ -24,6 +24,7 @@ def main():
     all_notebooks = glob("*.ipynb")
     for nb_name in all_notebooks:
         nb = nbf.read(nb_name, as_version=nbf.NO_CONVERT)
+        nb["metadata"]["kernelspec"]["display_name"] = "py37_default"
         nb["metadata"]["kernelspec"]["name"] = "conda-env-py37_default-py"
         nbf.write(nb, nb_name)
 
