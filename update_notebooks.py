@@ -4,7 +4,7 @@ import pybryt
 
 from glob import glob
 from otter.assign.solutions import strip_solutions_and_output, SOLUTION_CELL_TAG
-from otter.assign.utils import add_tag
+from otter.assign.utils import add_tag, remove_output
 
 
 def remove_notebook_solutions(nb_path, write_path):
@@ -16,14 +16,18 @@ def remove_notebook_solutions(nb_path, write_path):
 
 def main():
     ref_notebooks = glob("*-ref.ipynb")
-    
-    for ref in ref_notebooks:
-#         print(f"Creating reference for {ref}")
-#         pybryt.ReferenceImplementation.compile(ref).dump()
-        
+    for ref in ref_notebooks:        
         print(f"Creating stripped version of {ref}")
         nb_path = os.path.splitext(ref)[0][:-4] + ".ipynb"
         remove_notebook_solutions(ref, nb_path)
+
+    all_notebooks = glob("*.ipynb")
+    for nb_name in all_notebooks:
+        nb = nbf.read(nb_name, as_version=nbf.NO_CONVERT)
+        nb["metadata"]["kernelspec"]["display_name"] = "py37_default"
+        nb["metadata"]["kernelspec"]["name"] = "conda-env-py37_default-py"
+        remove_output(nb)
+        nbf.write(nb, nb_name)
 
 
 if __name__ == "__main__":
