@@ -64,6 +64,10 @@ with pybryt.check(hailstone_ref):
     run_hailstone_test_cases(hailstone)
 ```
 
+    REFERENCE: hailstone
+    SATISFIED: True
+
+
 ## Using Multiple Reference Implementations
 
 Now that we understand how to construct single references, let's take a look at combining multiple references. One of PyBryt's core ideas is to be flexible and student-implementation-agnostic, allowing instructors to write multiple reference implementations for the various was that students can solve problems. To demonstrate this, let's create another reference for the hailstone sequence. The implementation above used recursion to construct the list from the bottom-up, giving us a series of annotations that look like this:
@@ -72,6 +76,32 @@ Now that we understand how to construct single references, let's take a look at 
 ```python
 [hailstone_annotations[i].initial_value for i in range(len(hailstone_annotations)) if i < 20]
 ```
+
+
+
+
+    [[1],
+     [2, 1],
+     [4, 2, 1],
+     [8, 4, 2, 1],
+     [16, 8, 4, 2, 1],
+     [5, 16, 8, 4, 2, 1],
+     [10, 5, 16, 8, 4, 2, 1],
+     [20, 10, 5, 16, 8, 4, 2, 1],
+     [40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+     [9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]]
+
+
 
 But suppose that the student instead constructed the list iteratively, from the top-down:
 
@@ -97,6 +127,10 @@ with pybryt.check(hailstone_ref):
     run_hailstone_test_cases(iterative_hailstone)
 ```
 
+    REFERENCE: hailstone
+    SATISFIED: False
+
+
 To solve this issue, let's turn `iterative_hailstone` into its own reference:
 
 
@@ -104,6 +138,13 @@ To solve this issue, let's turn `iterative_hailstone` into its own reference:
 iterative_hailstone_ref = pybryt.ReferenceImplementation("iterative_hailstone", hailstone_annotations)
 iterative_hailstone_ref
 ```
+
+
+
+
+    <pybryt.reference.ReferenceImplementation at 0x7fe4c242aa10>
+
+
 
 To run checks against multiple reference implementations, simply pass in a list of them. Let's validate our old and new references using `pybryt.check`; we should see that each implementation satisfied one of the references, allowing us to check for two different kinds of implementations!
 
@@ -117,3 +158,16 @@ print()
 with pybryt.check([hailstone_ref, iterative_hailstone_ref]):
     run_hailstone_test_cases(iterative_hailstone)
 ```
+
+    REFERENCE: hailstone
+    SATISFIED: True
+    
+    REFERENCE: iterative_hailstone
+    SATISFIED: False
+    
+    REFERENCE: hailstone
+    SATISFIED: False
+    
+    REFERENCE: iterative_hailstone
+    SATISFIED: True
+
