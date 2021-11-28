@@ -30,7 +30,7 @@ def main():
             changes.append((m.span(), convert_match(m)))
 
         for (s, e), new_md in changes[::-1]:
-            clean_md = clean_md[:s] + new_md + clean_md[e + 1:]
+            clean_md = clean_md[:s] + new_md + clean_md[e:]
 
         with open(md_path, "w") as f:
             f.write(clean_md)
