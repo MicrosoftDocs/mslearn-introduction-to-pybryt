@@ -16,11 +16,17 @@ Consider, for example, that you wanted to check that a student correctly initial
 
 
 ```python
->>> np.random.seed(42)
->>> arr = np.random.normal(size=(100,100))
->>> pybryt.Value(arr)
-pybryt.Value
+np.random.seed(42)
+arr = np.random.normal(size=(100,100))
+pybryt.Value(arr)
 ```
+
+
+
+
+    pybryt.Value
+
+
 
 All annotations that are created are internally tracked by PyBryt, so there's no need to assign them to a variable unless you want to use them to create more complex annotations (more on that below).
 
@@ -28,10 +34,16 @@ Value annotations, when being used to check numerical values (including arrays, 
 
 
 ```python
->>> value_annotation = pybryt.Value(arr, atol=1e-3)
->>> value_annotation.check_against(arr.round(3)), value_annotation.check_against(arr.round(2))
-(True, False)
+value_annotation = pybryt.Value(arr, atol=1e-3)
+value_annotation.check_against(arr.round(3)), value_annotation.check_against(arr.round(2))
 ```
+
+
+
+
+    (True, False)
+
+
 
 The method `pybryt.Value.check_against` returns a boolean value indicating whether the object passed to it satisfies the value annotation. As you can see above, by allowing an absolute tolerance of $10^{-3}$, the value was satisfied when the array values were rounded to three places, but failed when rounded to two places.
 
@@ -49,12 +61,19 @@ Then, we could use this function to create a `Value` annotation to check hexadec
 
 
 ```python
->>> message = "hash me"
->>> sha1_hash = hashlib.sha1(message.encode()).hexdigest()
->>> sha1_annotation = pybryt.Value(sha1_hash, equivalence_fn=str_equal_lower)
->>> sha1_annotation.check_against(sha1_hash.upper())
-True
+message = "hash me"
+sha1_hash = hashlib.sha1(message.encode()).hexdigest()
+
+sha1_annotation = pybryt.Value(sha1_hash, equivalence_fn=str_equal_lower)
+sha1_annotation.check_against(sha1_hash.upper())
 ```
+
+
+
+
+    True
+
+
 
 ## Annotation options
 
@@ -104,8 +123,13 @@ An annotation collection is satisfied when all of its children are satisfied and
 
 
 ```python
->>> col.check(pybryt.MemoryFootprint.from_values(1, 1, 2, 2)), col.check(pybryt.MemoryFootprint.from_values(2, 1, 1, 2))
-(AnnotationResult(satisfied=True, annotation=pybryt.Collection),
- AnnotationResult(satisfied=False, annotation=pybryt.Collection))
+col.check(pybryt.MemoryFootprint.from_values(1, 1, 2, 2)), col.check(pybryt.MemoryFootprint.from_values(2, 1, 1, 2))
 ```
+
+
+
+
+    (AnnotationResult(satisfied=True, annotation=pybryt.Collection),
+     AnnotationResult(satisfied=False, annotation=pybryt.Collection))
+
 

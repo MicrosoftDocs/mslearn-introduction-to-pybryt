@@ -73,10 +73,16 @@ Now that we have some annotations, let's contruct a reference implementation. As
 
 
 ```python
->>> ref = pybryt.ReferenceImplementation("fibonacci", annotations) # SOLUTION
->>> ref
-<pybryt.reference.ReferenceImplementation at 0x7fde3095e850>
+ref = pybryt.ReferenceImplementation("fibonacci", annotations) # SOLUTION
+ref 
 ```
+
+
+
+
+    <pybryt.reference.ReferenceImplementation at 0x7fde3095e850>
+
+
 
 Now that you've got the correct reference implementation, let's try running it against some student implementations. As a sanity check, we'll run your reference against the solution above. You should see only your success messages, and that the reference was satisfied.
 

@@ -5,7 +5,7 @@ from otter.assign.utils import str_to_doctest
 from textwrap import dedent
 
 
-CODE_WITH_OUTPUT_REGEX = r"```python\n([^`]+)```\n{5}    ([\s\S]+?)\n{3}"
+CODE_WITH_OUTPUT_REGEX = r"```python\n([^`]+)```\n{2,5}    ([\s\S]+?)\n{2,}"
 
 
 def convert_match(m):
