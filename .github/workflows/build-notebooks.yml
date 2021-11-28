@@ -30,7 +30,7 @@ jobs:
 
     - name: Build Markdown files
       run: |
-        $CONDA/bin/jupyter nbconvert *.ipynb --to markdown
+        $CONDA/bin/jupyter nbconvert *.ipynb --to markdown --ExtractOutputPreprocessor.enabled=False
 
     - name: Commit and push
       run: |
