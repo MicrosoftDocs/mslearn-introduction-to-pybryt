@@ -30,7 +30,7 @@ jobs:
 
     - name: Build Markdown files
       run: |
-        jupyter nbconvert 02-annotations.ipynb 03-reference-implementations.ipynb --to markdown
+        jupyter nbconvert *.ipynb --to markdown
 
     - name: Commit and push
       run: |
