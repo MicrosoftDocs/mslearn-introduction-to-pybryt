@@ -28,6 +28,10 @@ jobs:
       run: |
         $CONDA/bin/python3 update_notebooks.py
 
+    - name: Build Markdown files
+      run: |
+        make markdown JUPYTER=$CONDA/bin/jupyter
+
     - name: Commit and push
       run: |
         git config --global user.name "github-actions"
