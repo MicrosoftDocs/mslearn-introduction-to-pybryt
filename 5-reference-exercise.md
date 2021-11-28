@@ -14,8 +14,6 @@ def run_test_cases(fib_fn):
     print("All test cases passed!")
 ```
 
-# Reference exercise
-
 In this exercise, you will create a reference implementation using PyBryt, and we'll check that reference using PyBryt.
 
 Recall that throughout this module, our goal has been to write a problem that will ask students to implement a dynamic programming solution to calculating numbers in the Fibonacci sequence. The function `fib` below does this for us: it takes in an integer $n$ and returns the $n^\text{th}$ Fibonacci number (starting from 1).
