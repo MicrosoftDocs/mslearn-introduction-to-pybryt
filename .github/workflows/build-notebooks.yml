@@ -30,7 +30,7 @@ jobs:
 
     - name: Build Markdown files
       run: |
-        make markdown JUPYTER=$CONDA/bin/jupyter
+        make markdown JUPYTER=$CONDA/bin/jupyter PYTHON3=$CONDA/bin/python3
 
     - name: Commit and push
       run: |
