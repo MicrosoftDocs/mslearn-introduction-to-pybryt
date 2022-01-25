@@ -1,6 +1,6 @@
 ```python
 !pip install -Uqq pybryt
-!wget https://raw.githubusercontent.com/MicrosoftDocs/mslearn-introduction-to-pybryt/main/exercise_utils.py
+!wget -q https://raw.githubusercontent.com/MicrosoftDocs/mslearn-introduction-to-pybryt/main/exercise_utils.py
 import pybryt
 from exercise_utils import fiberator
 from typing import Any, Dict, List, Optional

@@ -1,7 +1,7 @@
 ```python
 !pip install -Uqq pybryt
 """ # BEGIN PROMPT
-!wget https://raw.githubusercontent.com/MicrosoftDocs/mslearn-introduction-to-pybryt/main/exercise_utils.py
+!wget -q https://raw.githubusercontent.com/MicrosoftDocs/mslearn-introduction-to-pybryt/main/exercise_utils.py
 """; # END PROMPT
 import pybryt
 from exercise_utils import fiberator
